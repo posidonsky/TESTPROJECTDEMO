@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ironwood Penitentiary</title>
+  <meta name="description" content="An original pixel-art prison escape game. Serve the routine, craft tools, dig, cut or climb your way out of Ironwood.">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <canvas id="game"></canvas>
+
+  <div id="hud">
+    <div id="topLeft" class="hud-block">
+      <div class="clock-row">
+        <span id="dayLabel">DAY 1</span>
+        <span class="sep">·</span>
+        <span id="clock">07:10</span>
+      </div>
+      <div id="activityLabel">ROLL CALL</div>
+      <div id="activityTime" class="muted">ends in 0h 20m</div>
+      <div id="regimeLabel" class="regime hidden">REGIME: NORMAL</div>
+    </div>
+
+    <div id="topRight" class="hud-block right">
+      <div id="cashLabel">$25</div>
+      <div class="muted small">CASH</div>
+      <div class="keys">
+        <span><kbd>I</kbd> bag</span>
+        <span><kbd>C</kbd> craft</span>
+        <span><kbd>H</kbd> help</span>
+      </div>
+    </div>
+
+    <div id="objective" class="hud-block">
+      <div class="objective-label">NEXT MOVE</div>
+      <div id="objectiveText">Find a way out.</div>
+    </div>
+
+    <div id="bars" class="hud-block">
+      <div class="bar"><label>HEALTH</label><div class="track"><i id="barHealth"></i></div></div>
+      <div class="bar"><label>ENERGY</label><div class="track"><i id="barEnergy"></i></div></div>
+      <div class="bar"><label>HUNGER</label><div class="track"><i id="barHunger"></i></div></div>
+      <div class="bar heat"><label>HEAT</label><div class="track"><i id="barHeat"></i></div></div>
+      <div class="job">JOB: <strong id="jobLabel">LAUNDRY</strong></div>
+    </div>
+
+    <canvas id="minimap" width="208" height="152" aria-label="Prison map"></canvas>
+
+    <div id="log"></div>
+
+    <div id="prompt" class="hidden">
+      <div class="prompt-line"><kbd>E</kbd><span id="promptText"></span></div>
+      <div id="promptHint"></div>
+      <div id="promptProgressWrap"><div id="promptProgress"></div></div>
+    </div>
+
+    <div id="hotbar"></div>
+  </div>
+
+  <div id="modalRoot" class="hidden"></div>
+
+  <div id="intro" class="overlay">
+    <div class="intro-card">
+      <div class="brand">IRONWOOD</div>
+      <h1>PENITENTIARY</h1>
+      <p class="lede">Twenty-two years, three meals a day and a job folding laundry.
+        You have other plans.</p>
+      <p class="body">Learn the routine. Work the system. Craft what you need.
+        Dig under your cell, cut the yard fence, or take the roof vent.
+        Guards only act on what they see &mdash; stay out of the cones.</p>
+      <div class="controls">
+        <div><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> move</div>
+        <div><kbd>E</kbd> interact / hold to dig</div>
+        <div><kbd>I</kbd> inventory &nbsp; <kbd>C</kbd> craft &nbsp; <kbd>H</kbd> help</div>
+        <div><kbd>V</kbd> guard vision &nbsp; <kbd>TAB</kbd> map &nbsp; <kbd>M</kbd> sound &nbsp; <kbd>ESC</kbd> pause</div>
+      </div>
+      <div class="intro-actions">
+        <button id="introNew" class="btn primary big" type="button">START A NEW SENTENCE <span class="k-inline">ENTER</span></button>
+        <button id="introContinue" class="btn big" type="button">CONTINUE SAVED GAME</button>
+      </div>
+      <div class="fineprint">An original game: all art, code and level design made for this project. No assets from any commercial title.</div>
+    </div>
+  </div>
+
+  <div id="winscreen" class="overlay hidden">
+    <div class="win-card">
+      <div class="win-kicker">YOU ARE OUT</div>
+      <h1 id="winTitle">ESCAPED</h1>
+      <p id="winText" class="lede"></p>
+      <div id="winStats" class="win-stats"></div>
+      <button id="winAgain" class="btn primary big" type="button">PLAN ANOTHER ESCAPE</button>
+      <div class="fineprint">Thanks for playing Ironwood.</div>
+    </div>
+  </div>
+
+  <script type="module" src="src/main.js"></script>
+</body>
+</html>

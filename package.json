@@ -1,0 +1,17 @@
+{
+  "name": "ironwood-penitentiary",
+  "version": "1.0.0",
+  "private": true,
+  "description": "An original pixel-art prison escape game for the browser.",
+  "type": "module",
+  "scripts": {
+    "start": "node scripts/serve.mjs",
+    "test": "node tests/simulation.test.mjs",
+    "test:ui": "node tests/ui.test.mjs",
+    "shots": "node tests/screenshot.mjs"
+  },
+  "devDependencies": {
+    "@napi-rs/canvas": "^0.1.60",
+    "jsdom": "^26.0.0"
+  }
+}
